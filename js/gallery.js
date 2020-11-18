@@ -1,3 +1,4 @@
-import data from "../gallery-items";
+import images from "../gallery-items";
 
-console.log(data)
+// const images
+
