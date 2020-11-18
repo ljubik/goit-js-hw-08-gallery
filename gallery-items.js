@@ -63,7 +63,7 @@ const images =  [
     description: 'Lighthouse Coast Sea',
   },
 ];
-
+//доступ до класів
 const refs = {
   galleryList: document.querySelector('ul.gallery'),
   lightbox: document.querySelector('.lightbox'),
@@ -130,7 +130,18 @@ function onCloseHandler(e) {
   if(e.target.nodeName === "BUTTON") {
     refs.lightbox.classList.remove('is-open');
   }
+  // if(e.target.keypress === "Escape"){
+  //   console.log("click esk")
+  //   refs.lightbox.classList.remove('is-open');
+  // }
 }
+
+document.addEventListener("keydown", function(event) {
+  if(event.key === "Escape") {
+    refs.lightbox.classList.remove('is-open');
+    console.log("Click Escape")
+  }
+})
 
 refs.galleryList.addEventListener('click', onClickHandler);
 refs.btn.addEventListener('click', onCloseHandler);
