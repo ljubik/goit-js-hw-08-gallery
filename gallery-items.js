@@ -67,7 +67,9 @@ const images =  [
 const refs = {
   galleryList: document.querySelector('ul.gallery'),
   lightbox: document.querySelector('.lightbox'),
-  btn: document.querySelector('[data-action="close-lightbox"]')
+  btn: document.querySelector('[data-action="close-lightbox"]'),
+  divOverlay: document.querySelector('.lightbox__overlay')
+  
 };
 
 // Створення малюнку галереї
@@ -130,10 +132,13 @@ function onCloseHandler(e) {
   if(e.target.nodeName === "BUTTON") {
     refs.lightbox.classList.remove('is-open');
   }
-  // if(e.target.keypress === "Escape"){
-  //   console.log("click esk")
-  //   refs.lightbox.classList.remove('is-open');
-  // }
+}
+
+function onClose(e){
+  if(e.target.nodeName === "lightbox__overlay") {
+    console.log(e)
+    refs.lightbox.classList.remove('is-open');
+  }
 }
 
 document.addEventListener("keydown", function(event) {
@@ -141,7 +146,16 @@ document.addEventListener("keydown", function(event) {
     refs.lightbox.classList.remove('is-open');
     console.log("Click Escape")
   }
+  if(event.key === "ArrowRight") {
+    
+    console.log("Click ArrowRight")
+  }
+  if(event.key === "ArrowLeft") {
+    
+    console.log("Click ArrowLeft")
+  }
 })
 
 refs.galleryList.addEventListener('click', onClickHandler);
 refs.btn.addEventListener('click', onCloseHandler);
+refs.divOverlay.addEventListener('click', onClose);
