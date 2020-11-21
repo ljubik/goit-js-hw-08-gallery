@@ -124,12 +124,17 @@ function onClickHandler(e) {
     refs.lightbox.classList.add('is-open');
     refs.lightbox.querySelector('.lightbox__image').src = e.target.src;
     refs.lightbox.querySelector('.lightbox__image').alt = e.target.alt;
+    modEskRem();
+    console.log(refs.lightbox.querySelector('.lightbox__image').src)
   }
 }
 
 // модальне вікно кнопка закриття
 function closeLightBox(){
   refs.lightbox.classList.remove('is-open');
+  refs.lightbox.querySelector('.lightbox__image').src = "";
+  // console.log(refs.lightbox.querySelector('.lightbox__image').src)
+  document.removeEventListener("keydown", modEskRem)
 }
 
 function onCloseHandler(e) {
@@ -145,7 +150,8 @@ function onClose(e){
   }
 }
 
-document.addEventListener("keydown", function(event) {
+let modEskRem = function modalEskCloseListener(){
+  document.addEventListener("keydown", function(event) {
   if(event.key === "Escape") {
     closeLightBox()
     console.log("Click Escape")
@@ -159,6 +165,7 @@ document.addEventListener("keydown", function(event) {
     console.log("Click ArrowLeft")
   }
 })
+}
 
 refs.galleryList.addEventListener('click', onClickHandler);
 refs.btn.addEventListener('click', onCloseHandler);
