@@ -128,22 +128,26 @@ function onClickHandler(e) {
 }
 
 // модальне вікно кнопка закриття
+function closeLightBox(){
+  refs.lightbox.classList.remove('is-open');
+}
+
 function onCloseHandler(e) {
   if(e.target.nodeName === "BUTTON") {
-    refs.lightbox.classList.remove('is-open');
+    closeLightBox()
   }
 }
 
 function onClose(e){
   if(e.target.nodeName === "lightbox__overlay") {
     console.log(e)
-    refs.lightbox.classList.remove('is-open');
+    closeLightBox()
   }
 }
 
 document.addEventListener("keydown", function(event) {
   if(event.key === "Escape") {
-    refs.lightbox.classList.remove('is-open');
+    closeLightBox()
     console.log("Click Escape")
   }
   if(event.key === "ArrowRight") {
