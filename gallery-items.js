@@ -124,8 +124,8 @@ function onClickHandler(e) {
     refs.lightbox.classList.add('is-open');
     refs.lightbox.querySelector('.lightbox__image').src = e.target.src;
     refs.lightbox.querySelector('.lightbox__image').alt = e.target.alt;
-    modEskRem();
-    console.log(refs.lightbox.querySelector('.lightbox__image').src)
+    modalEskCloseListener(event);
+    // console.log(refs.lightbox.querySelector('.lightbox__image').src)
   }
 }
 
@@ -134,7 +134,7 @@ function closeLightBox(){
   refs.lightbox.classList.remove('is-open');
   refs.lightbox.querySelector('.lightbox__image').src = "";
   // console.log(refs.lightbox.querySelector('.lightbox__image').src)
-  document.removeEventListener("keydown", modEskRem)
+  document.removeEventListener("keydown", modalEskCloseListener(event))
 }
 
 function onCloseHandler(e) {
@@ -150,7 +150,7 @@ function onClose(e){
   }
 }
 
-let modEskRem = function modalEskCloseListener(){
+function modalEskCloseListener(event){
   document.addEventListener("keydown", function(event) {
   if(event.key === "Escape") {
     closeLightBox()
