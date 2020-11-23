@@ -134,6 +134,7 @@ function onClickHandler(e) {
 function closeLightBox(){
   refs.lightbox.classList.remove('is-open');
   refs.lightbox.querySelector('.lightbox__image').src = "";
+  refs.lightbox.querySelector('.lightbox__image').alt = "";
   // console.log(refs.lightbox.querySelector('.lightbox__image').src)
   document.removeEventListener("keydown", onEscape)
 }
