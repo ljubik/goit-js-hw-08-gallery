@@ -124,8 +124,9 @@ function onClickHandler(e) {
     refs.lightbox.classList.add('is-open');
     refs.lightbox.querySelector('.lightbox__image').src = e.target.src;
     refs.lightbox.querySelector('.lightbox__image').alt = e.target.alt;
-    modalEskCloseListener(event);
+    
     // console.log(refs.lightbox.querySelector('.lightbox__image').src)
+    document.addEventListener("keydown", onEscape)
   }
 }
 
@@ -134,7 +135,7 @@ function closeLightBox(){
   refs.lightbox.classList.remove('is-open');
   refs.lightbox.querySelector('.lightbox__image').src = "";
   // console.log(refs.lightbox.querySelector('.lightbox__image').src)
-  document.removeEventListener("keydown", modalEskCloseListener(event))
+  document.removeEventListener("keydown", onEscape)
 }
 
 function onCloseHandler(e) {
@@ -150,8 +151,7 @@ function onClose(e){
   }
 }
 
-function modalEskCloseListener(event){
-  document.addEventListener("keydown", function(event) {
+function onEscape(event){
   if(event.key === "Escape") {
     closeLightBox()
     console.log("Click Escape")
@@ -164,7 +164,6 @@ function modalEskCloseListener(event){
     
     console.log("Click ArrowLeft")
   }
-})
 }
 
 refs.galleryList.addEventListener('click', onClickHandler);
